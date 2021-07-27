@@ -9,6 +9,7 @@ spring:
       discovery:
         server-addr: 127.0.0.1:8848
 
+
 # MapperScan
 # sql映射文件位置
 mybatis-plus:
@@ -25,3 +26,5 @@ server:
 logging:
   level:
     com.atguigu.gulimall: debug
+
+
