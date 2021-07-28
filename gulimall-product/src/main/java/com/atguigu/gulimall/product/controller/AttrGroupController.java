@@ -41,6 +41,13 @@ public class AttrGroupController {
     @Autowired
     private AttrAttrgroupRelationService relationService;
 
+   /* //    /product/attrgroup/{catelogId}/withattr
+    // 获取当前三级分类下的所有属性分组和属性
+    @GetMapping(value = "/{catelogId}/withattr")
+    public R getAttrGroupWithAttrs(@PathVariable("catelogId")Long catelogId,){
+
+    }*/
+
 //    /product/attrgroup/attr/relation
 //    新增关联关系
     @PostMapping(value = "/attr/relation")
