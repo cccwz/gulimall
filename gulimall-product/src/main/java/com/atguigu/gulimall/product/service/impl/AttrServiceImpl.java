@@ -62,13 +62,14 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
 
     @Transactional
     @Override
+    //保存关联关系
     public void saveAttr(AttrVo attr) {
         AttrEntity attrEntity = new AttrEntity();
         //spring工具 ，将vo里的属性值复制到po里 要求：属性名是一一对应的
         BeanUtils.copyProperties(attr,attrEntity);
         //先保存到attr表里
         this.save(attrEntity);
-        if(attr.getAttrType()== ProductConstant.AttrEnum.ATTR_TYPE_BASE.getCode()){
+        if(attr.getAttrType()== ProductConstant.AttrEnum.ATTR_TYPE_BASE.getCode()&&attr.getAttrGroupId()!=null){
             //保存到相关联的表里
             AttrAttrgroupRelationEntity relationEntity = new AttrAttrgroupRelationEntity();
             relationEntity.setAttrGroupId(attr.getAttrGroupId());
@@ -109,7 +110,7 @@ public class AttrServiceImpl extends ServiceImpl<AttrDao, AttrEntity> implements
             if ("base".equalsIgnoreCase(type)){
                 AttrAttrgroupRelationEntity attrId = relationDao.selectOne(new QueryWrapper<AttrAttrgroupRelationEntity>().
                         eq("attr_id", attrEntity.getAttrId()));
-                if (attrId != null) {
+                if (attrId != null&&attrId.getAttrGroupId()!=null) {
                     Long attrGroupId = attrId.getAttrGroupId();
                     AttrGroupEntity attrGroupEntity = attrGroupDao.selectById(attrGroupId);
                     attrRespVo.setGroupName(attrGroupEntity.getAttrGroupName());

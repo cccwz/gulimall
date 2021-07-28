@@ -26,9 +26,9 @@ public class GulimallExceptionControllerAdvice {
                 BizCodeEnum.VALID_EXCEPTION.getMsg()).put("data",errorMap);
     }
 
-    @ExceptionHandler(value=Throwable.class)
+    /*@ExceptionHandler(value=Throwable.class)
     public R handleException(Throwable throwable){
         return R.error(BizCodeEnum.UNKNOW_EXEPTION.getCode(),
                 BizCodeEnum.UNKNOW_EXEPTION.getMsg());
-    }
+    }*/
 }
