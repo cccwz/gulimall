@@ -37,6 +37,15 @@ public class AttrGroupController {
     @Autowired
     private AttrService attrService;
 
+//    获取属性分组没有关联的其他属性
+//    /product/attrgroup/{attrgroupId}/noattr/relation
+    @GetMapping("/{attrgroupId}/noattr/relation")
+    public R attrNoRelation(@PathVariable("attrgroupId")Long attrGroupId,
+                            @RequestParam Map<String,Object> params){
+       PageUtils page= attrService.getNoRelationAttr(params,attrGroupId);
+       return R.ok().put("page",page);
+    }
+
     //删除属性和对应的分组
 //    /product/attrgroup
     @PostMapping("/attr/relation/delete")
