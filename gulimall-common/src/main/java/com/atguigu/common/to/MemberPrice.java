@@ -1,9 +1,11 @@
 /**
   * Copyright 2021 bejson.com 
   */
-package com.atguigu.gulimall.product.vo;
+package com.atguigu.common.to;
 
 import lombok.Data;
+
+import java.math.BigDecimal;
 
 /**
  * Auto-generated: 2021-07-28 21:53:11
@@ -12,11 +14,11 @@ import lombok.Data;
  * @website http://www.bejson.com/java2pojo/
  */
 @Data
-public class BaseAttrs {
+public class MemberPrice {
 
-    private Long attrId;
-    private String attrValues;
-    private int showDesc;
+    private Long id;
+    private String name;
+    private BigDecimal price;
 
 
 }
